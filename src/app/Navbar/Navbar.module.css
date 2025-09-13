@@ -1,0 +1,53 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+
+.logoImg {
+  height: 5rem;
+  width: auto;
+}
+
+.links a {
+  margin-left: 1rem;
+  font-size: 1.3rem;
+  gap:1rem;
+  text-decoration: none;
+  color: var(--blanco);
+}
+
+.linksSesion a {
+  margin-left: 1rem;
+  font-size: 1.3rem;
+  gap:1rem;
+  text-decoration: none;
+  color: var(--verdeClaro);
+}
+
+.linksSesion a:hover {
+  text-decoration: underline;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.search input {
+  background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
+  background-size: 10rem;
+  width: 30rem;
+  border: transparent;
+  border-bottom: solid 1px var(--blanco);
+  padding: 10px 10px 10px 30px;
+  outline: none;
+}
+
+.search input::placeholder {
+  color: var(--blanco);
+}
+
+
+

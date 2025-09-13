@@ -1,6 +1,15 @@
 :root {
-  --background: #ffffff;
+  --background: #000000;
   --foreground: #171717;
+  --blanco: #ffffff;
+  --naranja: #ff6600;
+  --gris: #808080;
+  --verde: #008000;
+  --verdeClaro: #3c9d34;
+  --verdeOscuro: #1eaf1e97;
+  --rojo: #ff0000;
+  --rojoClaro: #f04242;
+  --azul: #2782e9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +43,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   html {

@@ -1,0 +1,85 @@
+
+  
+.main h1 {  
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--verdeClaro);
+}
+  
+.contenedor {
+    margin-top: 6rem;
+    margin-left: auto;
+    margin-right: auto; 
+    display: flex;
+    width: 100%;
+    background: var(--negro);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.seccion {
+    flex: 1;
+    padding: 40px;
+    display: flex;           
+    flex-direction: column;  
+    align-items: center;     
+    justify-content: center; 
+}
+
+.inputField {
+    width: 100%;
+    max-width: 450px;     
+    padding: 12px 16px;
+    margin: 0.5rem auto;
+    margin-right: 1rem;    
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    display: block;
+}
+
+.botonLogin {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 0.5rem auto;    
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    border: none;
+    font-size: 1rem;
+    background-color: var(--verdeClaro);
+    cursor: pointer;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.botonLogin:hover {
+    transform: scale(1.05);
+    background-color: var(--verdeOscuro);
+}
+
+.registro {
+    font-size: 1rem;
+    margin-top: 2rem;
+    color: var(--gris);
+}
+
+.registro a {
+    color: var(--verdeClaro);     
+    font-weight: bold;         
+}
+
+.message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .message.success {
+    color: var(--verdeClaro);
+  }
+  
+  .message.error {
+    color:var(--rojoClaro);
+  }
+  
