@@ -52,7 +52,7 @@ export default function Registro() {
             </button>
           </form>
           <p className="registro">
-            ¿Ya tienes cuenta? <a href="/Login">Inicia sesión</a>
+            ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
           </p>
         </div>
       </div>

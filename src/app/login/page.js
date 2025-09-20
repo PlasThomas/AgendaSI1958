@@ -55,7 +55,7 @@ export default function Login() {
             </p>
           )}
           <p className="registro">
-            ¿No tienes cuenta? <a href="/Registro">Regístrate aquí</a>
+            ¿No tienes cuenta? <a href="/registro">Regístrate aquí</a>
           </p>
         </div>
       </div>
