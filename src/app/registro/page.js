@@ -1,38 +1,38 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import "./login.css";
+import "../login/login.css"; 
 
-export default function Login() {
+export default function Registro() {
+  const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const router = useRouter();  
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/api/login", {
+    const res = await fetch("/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ nombre, email, password }),
     });
 
     const data = await res.json();
-    setMessage(data.message);
-
-    if (data.ok) {
-      // 🔹 Redirigir a la página de inicio
-      router.push("/Inicio");
-    }
+    alert(data.message);
   };
 
   return (
     <main className="main">
       <div className="contenedor">
         <div className="seccion">
-          <h1>Inicia Sesión</h1>
-          <form onSubmit={handleLogin}>
+          <h1>Registro</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Nombre completo"
+              className="inputField"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
             <input
               type="email"
               placeholder="Correo electrónico"
@@ -47,15 +47,12 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit" className="botonLogin">Ingresar</button>
+            <button type="submit" className="botonLogin">
+              Registrarse
+            </button>
           </form>
-          {message && (
-            <p className={`message ${message.includes("exitoso") || message.includes("autenticado") ? "success" : "error"}`}>
-              {message}
-            </p>
-          )}
           <p className="registro">
-            ¿No tienes cuenta? <a href="/Registro">Regístrate aquí</a>
+            ¿Ya tienes cuenta? <a href="/Login">Inicia sesión</a>
           </p>
         </div>
       </div>

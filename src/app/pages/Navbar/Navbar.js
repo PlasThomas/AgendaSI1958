@@ -23,8 +23,8 @@ export default function Navbar() {
       </div>
 
       <div className={styles.linksSesion}>
-      <Link href="/Login">Iniciar sesión</Link>
-      <Link href="/Registro">Registrarse</Link>
+      <Link href="/login">Iniciar sesión</Link>
+      <Link href="/registro">Registrarse</Link>
       </div>
 
     </nav>
