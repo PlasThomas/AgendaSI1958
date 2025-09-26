@@ -8,19 +8,22 @@ export async function POST(req) {
     if (!email || !password) {
       return new Response(JSON.stringify({ ok: false, message: "Email y contraseña requeridos" }), { status: 400 });
     }
-
+    // valida el email
+    if (!ValidEmail(email)) {
+      return new Response(JSON.stringify({ ok: false, message: "Formato de email inválido" }), { status: 400 });
+    }
     const client = await clientPromise;
     const db = client.db(process.env.MONGODB_DB);
     const users = db.collection("usuarios");
+    // encuentra el usuario
+    const user = await users.findOne({email});
+    // dummy para asegurar que las operaciones tarden lo mismo
+    const dummy = "$2b$10$dummyhashdummyhashdummyhashdu";
+    const comparacion = user ? user.password : dummy;
+    const isValid = await bcrypt.compare(password, comparacion);
 
-    const user = await users.findOne({ email });
-    if (!user) {
-      return new Response(JSON.stringify({ ok: false, message: "Usuario no encontrado" }), { status: 401 });
-    }
-
-    const isValid = await bcrypt.compare(password, user.password);
-    if (!isValid) {
-      return new Response(JSON.stringify({ ok: false, message: "Contraseña incorrecta" }), { status: 401 });
+    if (!user || !isValid) {
+      return new Response(JSON.stringify({ ok: false, message: "Datos incorrectos" }), { status: 401 });
     }
 
     return new Response(
@@ -31,4 +34,8 @@ export async function POST(req) {
     console.error("Error login:", error);
     return new Response(JSON.stringify({ ok: false, message: "Error interno" }), { status: 500 });
   }
+}
+ // funcion para validar el email
+function ValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }

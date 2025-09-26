@@ -9,6 +9,14 @@ export async function POST(req) {
       return new Response(JSON.stringify({ ok: false, message: "Email y contraseña requeridos" }), { status: 400 });
     }
 
+    // valida el email y contrasenia
+    if (!ValidEmail(email)) {
+      return new Response(JSON.stringify({ ok: false, message: "Formato de email inválido" }), { status: 400 });
+    }
+    if(EmailPasswordLength(password, email)){
+      return new Response(JSON.stringify({ ok: false, message: "Correo y/o contrasena de longitud invalida" }), { status: 400 });
+    }
+    
     const client = await clientPromise;
     const db = client.db(process.env.MONGODB_DB);
     const users = db.collection("usuarios");
@@ -23,7 +31,7 @@ export async function POST(req) {
     const newUser = {
       email,
       password: hashedPassword,
-      role: role || "user",
+      role: "user",
       createdAt: new Date()
     };
 
@@ -34,4 +42,13 @@ export async function POST(req) {
     console.error(error);
     return new Response(JSON.stringify({ ok: false, message: "Error interno" }), { status: 500 });
   }
+}
+
+ // funcion para validar el email
+function ValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function EmailPasswordLength(password, email) {
+  return password && password.length >= 8 && password.length <= 100 && email.length <= 250;
 }
